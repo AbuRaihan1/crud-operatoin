@@ -6,7 +6,7 @@ import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
 
 function ProductsDataTable({ product }) {
-  const { name, price, quantity, _id } = product;
+  const { name, price, _id } = product;
   const [showModalForUpdate, setShowModalForUpdate] = useState(false);
   const [updateData, setUpdateData] = useState({});
   const [remainingProducts, setRemainingProducts] = useState([]);
@@ -24,7 +24,7 @@ function ProductsDataTable({ product }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://crud-server2.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -46,7 +46,7 @@ function ProductsDataTable({ product }) {
   // update data in database
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/users/${product._id}`, {
+    fetch(`https://crud-server2.vercel.app/users/${product._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -104,15 +104,15 @@ function ProductsDataTable({ product }) {
               onChange={handleInputChange}
               required
             />
-            <input
+            {/* <input
               type="text"
               className="form-control"
               placeholder="quantity"
               name="quantity"
-              defaultValue={quantity}
+              // defaultValue={quantity}
               onChange={handleInputChange}
               required
-            />
+            /> */}
 
             <button className="btn btn-primary w-100 text-center mx-3 my-2">
               Update

@@ -7,10 +7,10 @@ const AddProductForm = ({ handleCloseModal, setProducts, products }) => {
     const form = e.target;
     const name = form.name.value;
     const price = form.price.value;
-    const quantity = form.quantity.value;
-    const products = { name, price, quantity };
+    // const quantity = form.quantity.value;
+    const products = { name, price };
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://crud-server2.vercel.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,13 +42,13 @@ const AddProductForm = ({ handleCloseModal, setProducts, products }) => {
             placeholder="price"
             required
           />{" "}
-          <input
+          {/* <input
             type="number"
             name="quantity"
             className="form-control  w-100 "
             placeholder="quantity"
             required
-          />{" "}
+          />{" "} */}
           <input
             className="btn btn-primary align-left  w-100"
             type="submit"
